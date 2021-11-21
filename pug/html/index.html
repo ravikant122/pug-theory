@@ -1,0 +1,114 @@
+
+<!-- .data= (right),  .data =  (wrong)--><!DOCTYPE html>
+<html>
+  <head>
+    <title>whole pug</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      p {
+          color: red;
+          text-decoration: underline;
+      }
+      .comment {
+          font-family: sans-serif;
+          line-height: 1.5;
+          padding: 10px;
+          border: 1px solid #555;
+          width: 250px;
+      }
+      
+      .date { font-size: 85%; text-align: right; }
+      .author { font-size: 110%; font-weight: bold; }
+      .text { font-size: 85%; text-align: center; }
+    </style>
+  </head>
+  <body> 
+    <!-- this is a comment-->
+    <h1>This is a heading</h1><!-- This is also a comment -->
+    <p>This is a paragraph
+      <and>this is a line</and>
+    </p>
+    <p>
+      we put . when 
+      we have to write multiple lines
+      all lines will go in p(paragraph)
+    </p>
+    <ul> 
+      <li>line1 </li>
+      <li>line2</li>
+    </ul>
+    <!-- id(Start with #)-->
+    <h1 id="pageTitle">this is page title</h1>
+    <!-- class(big-para) - start & end with . - write in next line otherwise it will next word(paragraph) the class-->
+    <p class="big-para">
+      paragraph with class
+      big-para is a class here
+    </p>
+    <!-- if we don't use any element with id or class then default element will be div-->
+    <div class="display">this will go under div</div>
+    <div id="display-id">
+      this will also go under div
+      
+    </div>
+    <!-- we can use js in the attributes of a tag-->
+    <input type="password" name="pass" data-js="NOT Ok">
+    <!-- - = js line -->
+    <div class="class1 class2"></div>
+    <!-- append - myClass class1 class2-->
+    <div class="myClass class1 class2"></div>
+    <div style="color:white;background-color:green;">
+      this is under div
+      
+    </div><img src="myPic.png" alt="this is my photo">
+    <!-- disabling the input-->
+    <input type="text" disabled>
+    <p style="text-align: center; text-transform: uppercase">this is styled paragraph</p>
+    <!-- loop-->
+    <!-- if we write p n then n will not be taken as a value-->
+    <p>1</p>
+    <!-- if we write p n then n will not be taken as a value-->
+    <p>2</p>
+    <!-- if we write p n then n will not be taken as a value-->
+    <p>3</p>
+    <!-- if we write p n then n will not be taken as a value-->
+    <p>4</p>
+    <!-- if we write p n then n will not be taken as a value-->
+    <p>5</p>
+    <!-- n = value, i = index-->
+    <p>44 - 0</p>
+    <p>7 - 1</p>
+    <p>112 - 2</p>
+    <p>878 - 3</p>
+    <p>2 - 4</p>
+    <p>rk</p>
+    <p>sk</p>
+    <p>hk</p>
+    <!-- json object ( n = value, i = key)-->
+    <p>23 - web</p>
+    <p>56 - software design</p>
+    <!-- each = for-->
+    <p>23 - web</p>
+    <p>56 - software design</p>
+    <!-- else will be executed when for/each doesn't-->
+    <h1>no values in grades</h1>
+    <!-- #{ object.key } - to use json object-->
+    <!-- | will not make next word a tag-->
+    <p>
+       Welcome back,<strong>ravi</strong></p>
+    <!-- case statement-->
+    <p>order is pending </p>
+    <h1>company name </h1>
+    <nav><a href="index.html">Home </a><a href="about.html">AboutUS </a><a href="gallery.html">Gallery </a><a href="contact.html">ContactUs</a></nav>
+    <div class="comment"> 
+      <div class="date">04-02-2019</div>
+      <div class="author">Ravi </div>
+      <div class="text">Yeah mate!!</div>
+    </div>
+    <!-- mixin = function - define them above doctype-->
+    <div class="comment"> 
+      <div class="data">04-02-2018</div>
+      <div class="author">ravi</div>
+      <div class="text">yeah mate!!</div>
+    </div>
+  </body>
+</html>

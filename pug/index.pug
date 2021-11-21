@@ -1,0 +1,141 @@
+// .data= (right),  .data =  (wrong)
+mixin comment(commentData)
+    .comment 
+        .data= commentData.date
+        .author= commentData.author 
+        .text= commentData.text
+
+doctype html
+html
+    head
+        title whole pug
+        link(rel="stylesheet" href="style.css")
+        style.
+            p {
+                color: red;
+                text-decoration: underline;
+            }
+            .comment {
+                font-family: sans-serif;
+                line-height: 1.5;
+                padding: 10px;
+                border: 1px solid #555;
+                width: 250px;
+            }
+
+            .date { font-size: 85%; text-align: right; }
+            .author { font-size: 110%; font-weight: bold; }
+            .text { font-size: 85%; text-align: center; }
+    body 
+        // this is a comment
+        h1 This is a heading
+        <!-- This is also a comment -->
+        p This is a paragraph
+            and this is a line
+        p.
+            we put . when 
+            we have to write multiple lines
+            all lines will go in p(paragraph)
+        ul 
+            li line1 
+            li line2
+        // id(Start with #)
+        h1#pageTitle this is page title
+        // class(big-para) - start & end with . - write in next line otherwise it will next word(paragraph) the class
+        p.big-para.
+            paragraph with class
+            big-para is a class here
+        // if we don't use any element with id or class then default element will be div
+        .display.
+            this will go under div
+        #display-id.
+            this will also go under div
+        
+        // we can use js in the attributes of a tag
+        input(type='password' name='pass' data-js=`${ 1>2 ? "Ok": "NOT Ok"}`)
+
+        // - = js line 
+        - const myClasses = ['class1', 'class2'];
+        div(class=myClasses)
+
+        // append - myClass class1 class2
+        div.myClass(class=myClasses)
+
+        - const myStyle = {"color": "white", "background-color": "green"};
+        div(style=myStyle).
+            this is under div
+        
+        - const myAttr = {"src": "myPic.png", "alt": "this is my photo"};
+        img&attributes(myAttr)
+
+        // disabling the input
+        input(type="text" disabled)
+
+        p(style="text-align: center; text-transform: uppercase") this is styled paragraph
+
+        // loop
+        each n in [1,2,3,4,5]
+            // if we write p n then n will not be taken as a value
+            p=n
+        
+        // n = value, i = index
+        each n, i in [44,7,112,878,2]
+            p=  n + " - " + i
+
+        - const names = ['rk', 'sk', 'hk']
+        each n in names 
+            p=n
+        
+        // json object ( n = value, i = key)
+        - const grades = {"web": 23, "software design": 56} 
+        each n, i in grades 
+            p= n+ " - " + i
+
+        // each = for
+        for n, i in grades 
+            p= n+ " - " + i
+
+        // else will be executed when for/each doesn't
+        for n, i in []
+            p= n+ " - " + i
+        else 
+            h1 no values in grades
+        
+        // #{ object.key } - to use json object
+        // | will not make next word a tag
+        - let user = {name: "ravi", loggedIn: true, lastLogin: 6};
+        if user.loggedIn 
+            p 
+                | Welcome back,
+                strong #{ user.name }
+        else if user.lastLogin < 10
+            p your last login was #{ user.lastLogin } minutes ago
+            p 
+                a(href='/login') log In Again
+        else 
+            a(href='/login') Log In
+
+        // case statement
+        - const orderStatus = 'Pending'
+
+        case orderStatus
+            when 'Pending'
+                p order is pending 
+            when 'Transit'
+                p order is transit 
+            when 'Completed'
+                p order is completed 
+            default 
+                p order cancelled
+
+        include includes/nav
+
+        .comment 
+            .date 04-02-2019
+            .author Ravi 
+            .text Yeah mate!!
+
+        // mixin = function - define them above doctype
+
+        - const commentData = {date: '04-02-2018', author: 'ravi', text: 'yeah mate!!'};
+        +comment(commentData)
